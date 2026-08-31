@@ -1,0 +1,26 @@
+{
+  "name": "واژه‌باکس — جعبه لایتنر و دیکشنری تصویری",
+  "short_name": "واژه‌باکس",
+  "description": "جعبه لایتنر هوشمند با منحنی ابینگهانس و دیکشنری تصویری آکسفورد المتری",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#07211f",
+  "theme_color": "#07211f",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "lang": "fa",
+  "dir": "rtl"
+}

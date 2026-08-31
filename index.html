@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="واژه‌باکس — جعبه لایتنر هوشمند با منحنی ابینگهانس و دیکشنری تصویری آکسفورد المتری" />
+    <meta name="theme-color" content="#07211f" />
     <title>واژه‌باکس — جعبه لایتنر و دیکشنری تصویری</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,9 +20,56 @@
         background-color: #07211f;
       }
     </style>
+    <link rel="manifest" href="/manifest.json" />
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- PWA Install Button Script -->
+    <script>
+      let deferredPrompt;
+      
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        showInstallButton();
+      });
+
+      function showInstallButton() {
+        const installBtn = document.getElementById('install-btn');
+        if (installBtn) {
+          installBtn.style.display = 'block';
+        }
+      }
+
+      async function installApp() {
+        if (!deferredPrompt) {
+          alert('امکان نصب برنامه در این مرورگر وجود ندارد');
+          return;
+        }
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        if (outcome === 'accepted') {
+          console.log('کاربر نصب را پذیرفت');
+          const installBtn = document.getElementById('install-btn');
+          if (installBtn) {
+            installBtn.style.display = 'none';
+          }
+        }
+        deferredPrompt = null;
+      }
+
+      window.addEventListener('appinstalled', () => {
+        console.log('PWA نصب شد');
+        const installBtn = document.getElementById('install-btn');
+        if (installBtn) {
+          installBtn.style.display = 'none';
+        }
+      });
+
+      // اضافه کردن تابع به window برای دسترسی از React
+      window.installApp = installApp;
+    </script>
   </body>
 </html>
