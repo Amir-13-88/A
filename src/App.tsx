@@ -191,10 +191,25 @@ export default function App() {
             </span>
             <span className="font-display text-xl leading-none text-ink-50">واژه‌باکس</span>
           </div>
-          <span className="flex items-center gap-1.5 rounded-full bg-ink-850 px-3 py-1.5 text-xs font-bold text-coral-300">
-            <FlameIcon size={15} />
-            {faNum(streak.count)} روز
-          </span>
+          <div className="flex items-center gap-2">
+            <button
+              id="install-btn"
+              onClick={() => window.installApp && window.installApp()}
+              className="hidden items-center gap-1.5 rounded-full bg-saffron-400 px-3 py-1.5 text-xs font-bold text-ink-950 transition-colors hover:bg-saffron-300"
+              style={{ display: 'none' }}
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              نصب برنامه
+            </button>
+            <span className="flex items-center gap-1.5 rounded-full bg-ink-850 px-3 py-1.5 text-xs font-bold text-coral-300">
+              <FlameIcon size={15} />
+              {faNum(streak.count)} روز
+            </span>
+          </div>
         </header>
 
         <main className="mx-auto max-w-5xl px-4 pb-32 pt-7 sm:px-6 lg:px-10 lg:pb-16 lg:pt-10">
