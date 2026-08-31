@@ -1,1 +1,191 @@
 @import "tailwindcss";
+
+@theme {
+  --font-display: "Lalezar", "Vazirmatn", sans-serif;
+  --font-body: "Vazirmatn", ui-sans-serif, system-ui, sans-serif;
+  --font-en: "Fraunces", Georgia, serif;
+
+  --color-ink-950: #07211f;
+  --color-ink-900: #0b2b28;
+  --color-ink-850: #0f3330;
+  --color-ink-800: #143c38;
+  --color-ink-700: #1c4a45;
+  --color-ink-600: #2a5c55;
+  --color-ink-500: #3f726a;
+  --color-ink-400: #5d8b83;
+  --color-ink-300: #86aba3;
+  --color-ink-200: #b3ccc5;
+  --color-ink-100: #dae9e4;
+  --color-ink-50: #eff6f3;
+
+  --color-saffron-200: #ffe7ad;
+  --color-saffron-300: #ffd97a;
+  --color-saffron-400: #ffc94d;
+  --color-saffron-500: #f7b32b;
+  --color-saffron-600: #db9a12;
+
+  --color-coral-300: #ffb3a3;
+  --color-coral-400: #ff8a75;
+  --color-coral-500: #ff6f59;
+  --color-coral-600: #e85540;
+
+  --color-mint-200: #b8f2e0;
+  --color-mint-300: #8fe8cd;
+  --color-mint-400: #5fd6b4;
+  --color-mint-500: #34b58f;
+
+  --color-paper: #f7f1e3;
+  --color-paper-dim: #ece2cb;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-ink-950);
+  color: var(--color-ink-100);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-saffron-400);
+  color: var(--color-ink-950);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-ink-600) transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--color-ink-600);
+  border-radius: 8px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+/* ---------- 3D flip helpers ---------- */
+.perspective-1400 {
+  perspective: 1400px;
+}
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+.backface-hide {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.flip-y {
+  transform: rotateY(180deg);
+}
+
+/* ---------- keyframes ---------- */
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(4deg);
+  }
+}
+.anim-float {
+  animation: floaty var(--dur, 9s) ease-in-out var(--delay, 0s) infinite;
+}
+
+@keyframes spinSlow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.anim-spin-slow {
+  animation: spinSlow 26s linear infinite;
+}
+
+@keyframes dashDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.curve-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: dashDraw 1.8s 0.25s cubic-bezier(0.6, 0, 0.2, 1) forwards;
+}
+
+@keyframes pulseSoft {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.35);
+  }
+}
+.anim-pulse-soft {
+  animation: pulseSoft 2.2s ease-in-out infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+.anim-wiggle {
+  animation: wiggle 3.4s ease-in-out infinite;
+}
+
+@keyframes speakRing {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 201, 77, 0.55);
+  }
+  100% {
+    box-shadow: 0 0 0 14px rgba(255, 201, 77, 0);
+  }
+}
+.anim-speak {
+  animation: speakRing 0.9s ease-out infinite;
+}
+
+/* ---------- small components ---------- */
+.kbd {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 8px;
+  border: 1px solid var(--color-ink-600);
+  border-bottom-width: 3px;
+  background: var(--color-ink-800);
+  color: var(--color-ink-200);
+}
+
+.dotted-bg {
+  background-image: radial-gradient(
+    circle,
+    rgba(134, 171, 163, 0.16) 1px,
+    transparent 1.4px
+  );
+  background-size: 26px 26px;
+}
